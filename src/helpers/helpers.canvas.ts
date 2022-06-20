@@ -128,12 +128,12 @@ export function clearCanvas(canvas, ctx) {
 
 export function drawPoint(ctx, options, x, y) {
   let type, xOffset, yOffset, size, cornerRadius;
-  const style = options.pointStyle;
+  const style: string | object | null = options.pointStyle;
   const rotation = options.rotation;
   const radius = options.radius;
   let rad = (rotation || 0) * RAD_PER_DEG;
 
-  if (style && typeof style === 'object') {
+  if (typeof style === 'object') {
     type = style.toString();
     if (type === '[object HTMLImageElement]' || type === '[object HTMLCanvasElement]') {
       ctx.save();
