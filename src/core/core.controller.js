@@ -52,7 +52,7 @@ function onAnimationProgress(context) {
 function getCanvas(item) {
   if (_isDomSupported() && typeof item === 'string') {
     item = document.getElementById(item);
-  } else if (item && item.length) {
+  } else if (item.length) {
     // Support for array based queries (such as jQuery)
     item = item[0];
   }
