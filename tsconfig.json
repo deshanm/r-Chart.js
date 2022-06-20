@@ -9,12 +9,17 @@
     "alwaysStrict": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
-    "types": ["offscreencanvas"],
-    "lib": ["es2018", "DOM"]
+    "strictNullChecks": true,
+    "lib": [
+      "es2018",
+      "DOM"
+    ]
   },
   "typedocOptions": {
     "name": "Chart.js",
-    "entryPoints": ["types/index.esm.d.ts"],
+    "entryPoints": [
+      "types/index.esm.d.ts"
+    ],
     "readme": "none",
     "excludeExternals": true,
     "includeVersion": true,
@@ -22,7 +27,8 @@
   },
   "include": [
     "./src/**/*.js",
-    "./types"
+    "./src/**/*.ts",
+    "./types",
   ],
   "exclude": [
     "./types/tests"

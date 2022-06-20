@@ -18,6 +18,28 @@ import {debounce} from '../helpers/helpers.extras';
  * @typedef { import("../../types/index.esm").Point } Point
  */
 
+
+interface Meta {
+    type: null;
+    data: [];
+    dataset: null;
+    controller: null | any;
+    hidden: null;			// See isDatasetVisible() comment
+    xAxisID: null;
+    yAxisID: null;
+    order: number;
+    index:  number;
+    _dataset: any;
+    _parsed: [];
+    _sorted: boolean
+}
+
+type DataSet = {
+  order?: number;
+} | undefined;
+type Nullable<T> = T | null;
+
+
 const KNOWN_POSITIONS = ['top', 'bottom', 'left', 'right', 'chartArea'];
 function positionIsHorizontal(position, axis) {
   return position === 'top' || position === 'bottom' || (KNOWN_POSITIONS.indexOf(position) === -1 && axis === 'x');
@@ -811,10 +833,12 @@ class Chart {
     return [];
   }
 
+  
+
   getDatasetMeta(datasetIndex) {
-    const dataset = this.data.datasets[datasetIndex];
+    const dataset: Nullable<DataSet> = this.data.datasets[datasetIndex];
     const metasets = this._metasets;
-    let meta = metasets.filter(x => x && x._dataset === dataset).pop();
+    let meta: Meta = metasets.filter(x => x && x._dataset === dataset).pop();
 
     if (!meta) {
       meta = {
@@ -902,7 +926,7 @@ class Chart {
 	 * @private
 	 */
   _destroyDatasetMeta(datasetIndex) {
-    const meta = this._metasets[datasetIndex];
+    const meta: Nullable<Meta> = this._metasets[datasetIndex];
     if (meta.controller) {
       meta.controller._destroy();
     }
