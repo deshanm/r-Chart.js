@@ -825,7 +825,7 @@ class Chart {
         hidden: null,			// See isDatasetVisible() comment
         xAxisID: null,
         yAxisID: null,
-        order: dataset && dataset.order || 0,
+        order: dataset.order || 0,
         index: datasetIndex,
         _dataset: dataset,
         _parsed: [],
@@ -903,7 +903,7 @@ class Chart {
 	 */
   _destroyDatasetMeta(datasetIndex) {
     const meta = this._metasets[datasetIndex];
-    if (meta && meta.controller) {
+    if (meta.controller) {
       meta.controller._destroy();
     }
     delete this._metasets[datasetIndex];
