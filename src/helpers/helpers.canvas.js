@@ -133,7 +133,7 @@ export function drawPoint(ctx, options, x, y) {
   const radius = options.radius;
   let rad = (rotation || 0) * RAD_PER_DEG;
 
-  if (style && typeof style === 'object') {
+  if (typeof style === 'object') {
     type = style.toString();
     if (type === '[object HTMLImageElement]' || type === '[object HTMLCanvasElement]') {
       ctx.save();
