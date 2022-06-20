@@ -169,7 +169,7 @@ function titleArgs(scale, offset, position, align) {
 }
 
 export default class Scale extends Element {
-
+  chart: any;
   // eslint-disable-next-line max-statements
   constructor(cfg) {
     super();
