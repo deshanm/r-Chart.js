@@ -169,7 +169,7 @@ function titleArgs(scale, offset, position, align) {
 }
 
 export default class Scale extends Element {
-
+  chart: any;
   // eslint-disable-next-line max-statements
   constructor(cfg) {
     super();
@@ -361,7 +361,7 @@ export default class Scale extends Element {
 	 */
   getLabels() {
     const data = this.chart.data;
-    return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels || [];
+    return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels;
   }
 
   // When a new layout is created, reset the data limits cache
