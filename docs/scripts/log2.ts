@@ -1,6 +1,8 @@
 import {Scale, LinearScale} from 'chart.js';
 
 export default class Log2Axis extends Scale {
+  min: undefined | number;
+  max: undefined | number;
   constructor(cfg) {
     super(cfg);
     this._startValue = undefined;
@@ -21,8 +23,10 @@ export default class Log2Axis extends Scale {
   buildTicks() {
     const ticks = [];
 
-    let power = Math.floor(Math.log2(this.min || 1));
-    let maxPower = Math.ceil(Math.log2(this.max || 2));
+    let power = Math.floor(Math.log2(this.min));
+    let maxPower = Math.ceil(Math.log2(this.max));
+
+
     while (power <= maxPower) {
       ticks.push({value: Math.pow(2, power)});
       power += 1;
