@@ -11,7 +11,8 @@ module.exports = function(karma) {
     .option('verbose', {default: false})
     .argv;
 
-  const grep = (args.grep === true || args.grep === undefined) ? '' : args.grep;
+  // const grep = (args.grep === true || args.grep === undefined) ? '' : args.grep;
+  const grep = args.grep === true ? '' : args.grep;
   const specPattern = 'test/specs/**/*' + grep + '*.js';
 
   // Use the same rollup config as our dist files: when debugging (npm run dev),
