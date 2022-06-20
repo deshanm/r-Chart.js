@@ -361,7 +361,7 @@ export default class Scale extends Element {
 	 */
   getLabels() {
     const data = this.chart.data;
-    return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels || [];
+    return this.options.labels || (this.isHorizontal() ? data.xLabels : data.yLabels) || data.labels;
   }
 
   // When a new layout is created, reset the data limits cache
