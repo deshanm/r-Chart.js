@@ -239,9 +239,9 @@ function createProxyAndListen(chart, type, listener) {
     // This case can occur if the chart is destroyed while waiting
     // for the throttled function to occur. We prevent crashes by checking
     // for a destroyed chart
-    if (chart.ctx !== null) {
+    // if (chart.ctx !== null) {
       listener(fromNativeEvent(event, chart));
-    }
+    // }
   }, chart, (args) => {
     const event = args[0];
     return [event, event.offsetX, event.offsetY];
