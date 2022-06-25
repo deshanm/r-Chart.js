@@ -45,14 +45,17 @@ function onAnimationProgress(context) {
   callCallback(animationOptions && animationOptions.onProgress, [context], chart);
 }
 
+type Item = {
+  canvas: any
+} | string | number[] | HTMLElement;
 /**
  * Chart.js can take a string id of a canvas element, a 2d context, or a canvas element itself.
  * Attempt to unwrap the item passed into the chart constructor so that it is a canvas element (if possible).
  */
-function getCanvas(item) {
+function getCanvas(item?: Item | string) {
   if (_isDomSupported() && typeof item === 'string') {
     item = document.getElementById(item);
-  } else if (item && item.length) {
+  } else if (item.length) {
     // Support for array based queries (such as jQuery)
     item = item[0];
   }
